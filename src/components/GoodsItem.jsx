@@ -1,8 +1,9 @@
 import React from 'react'
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Rating, Typography } from '@mui/material';
 
 const GoodsItem = (props) => {
-    const { name, price, poster, setOrder} = props
+    const { name, price, poster, raiting, setOrder} = props
+   
 
     return (
         <Grid item xs={12} sm={6} md={4}>
@@ -39,6 +40,9 @@ const GoodsItem = (props) => {
                         {name}
                     </Typography>
                     <Typography>
+                        <Rating name="half-rating-read" defaultValue={raiting} precision={0.5} />
+                    </Typography>
+                    <Typography>
                         Цена: {price} руб.
                     </Typography>
                 </CardContent>
@@ -52,7 +56,6 @@ const GoodsItem = (props) => {
                                 price: props.price
                                 }
                             )
-                            
                         }}>Купить</Button>
                 </CardActions>
            </Card>

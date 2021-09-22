@@ -2,17 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {ThemeProvider, createTheme} from '@mui/material/styles'
-import {positions, Provider as ProviderAlert} from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
+import AlertContext from './context/AlertContext'
 import App from './components/App';
 
 import './index.scss';
-
-
-const optionsAlert = {
-    timeout: 5000,
-    position: positions.BOTTOM_LEFT
-}
 
 const theme = createTheme({
     palette: {
@@ -28,9 +21,9 @@ const theme = createTheme({
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
-            <ProviderAlert template={AlertTemplate} {...optionsAlert}>
-                <App />
-            </ProviderAlert>
+            <AlertContext>
+                <App /> 
+            </AlertContext>
         </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root')

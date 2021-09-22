@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../context/AppContext'
 import { ShoppingCart,  KeyboardArrowRight } from '@mui/icons-material'
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography, IconButton, Button } from '@mui/material'
 import { useAlert } from 'react-alert'
@@ -6,19 +7,17 @@ import BasketItem from './BasketItem'
 
 const Basket = (props) => {
     const {
-        cartOpen,
-        closeCart = Function.prototype,
-        order = [],
-        removeFromOrder,
-        setOrder
-    } = props
+        order, setOrder,
+        isCartOpen, closeCart,
+        removeFromOrder, 
+    } = useContext(AppContext)
 
     const alert = useAlert()
 
     return (
         <Drawer
             anchor="right"
-            open={cartOpen}
+            open={isCartOpen}
             onClose={closeCart}
             PaperProps={{sx:{width:"100%", maxWidth: "400px"}}}
         >

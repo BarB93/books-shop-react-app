@@ -1,6 +1,7 @@
 export const goods = [
     {
         id: 'pg01',
+        raiting: 4,
         category: 'books',
         name: 'Чарльз Петцольд. Код. Тайный язык информатики',
         poster: "https://img1.labirint.ru/rcimg/7b18983d20687e06f2603eff8e646b9f/960x540/books72/716519/ph_001.jpg?1569489903",
@@ -8,6 +9,7 @@ export const goods = [
     },
     {
         id: 'pg02',
+        raiting: 4.5,
         category: 'books',
         name: 'Адитья Бхаргава. Грокаем Алгоритмы',
         poster: "https://img4.labirint.ru/rc/1176fa7ab21d9aed61d3fa4707b0bf39/220x340/books58/571060/cover.jpg?1598873204",
@@ -15,6 +17,7 @@ export const goods = [
     },
     {
         id: 'pg03',
+        raiting: 4,
         category: 'books',
         name: 'Роберт Мартин. Чистая архитектура. Искусство разработки программного обеспечения',
         poster: "https://img4.labirint.ru/rc/cdf1f2a509f623b707234d562e4b5522/220x340/books64/634082/cover.jpg?1598959632",
@@ -22,6 +25,7 @@ export const goods = [
     },
     {
         id: 'ff02',
+        raiting: 4,
         category: 'books',
         name: 'Александр Никонов: Апгрейд обезьяны. Большая история маленькой сингулярности',
         poster: "https://img3.labirint.ru/rc/5ca1fdb9b7f0a7ce39104f8ad7e3d356/220x340/books6/50691/cover.jpg?1449720256",
@@ -29,6 +33,7 @@ export const goods = [
     },
     {
         id: 'ff03',
+        raiting: 4,
         category: 'books',
         name: 'Юрий Никитин: Трое из Леса. Трилогия',
         poster: "https://img3.labirint.ru/rc/6be5ebe38ec701db7765466def7ec216/220x340/books71/703887/cover.jpg?1564209979",
@@ -36,6 +41,7 @@ export const goods = [
     },
     {
         id: 'ff04',
+        raiting: 4,
         category: 'books',
         name: 'Александр Никонов. Тест Тьюринга',
         poster: "https://img3.labirint.ru/rc/9428622af8b0314bd5f2f5912388e06a/220x340/books78/773817/cover.jpg?1603862780",
@@ -43,6 +49,7 @@ export const goods = [
     },
     {
         id: 'ff05',
+        raiting: 4,
         category: 'books',
         name: 'Михаил Радуга. Фаза. Взламывая иллюзию реальности',
         poster: "https://img3.labirint.ru/rc/02c5f3ffdb165d2519e24776911b9f83/220x340/books49/489245/cover.jpg?1563824704",
@@ -50,6 +57,7 @@ export const goods = [
     },
     {
         id: 'ff06',
+        raiting: 4,
         category: 'books',
         name: 'Александр Никонов. Астрономия на пальцах. В иллюстрациях',
         poster: "https://img3.labirint.ru/rc/769d1c5e42906783e84437c20f21d898/220x340/books70/698119/cover.jpg?1564205990",
@@ -57,6 +65,7 @@ export const goods = [
     },
     {
         id: 'ff07',
+        raiting: 4,
         category: 'books',
         name: 'Александр Никонов: Ликбез по экономике. Без иллюзий о работе общества и государства',
         poster: "https://img3.labirint.ru/rc/aead96d678f6132e697b96ca342c1d87/220x340/books75/748497/cover.jpg?1602509305",
@@ -64,6 +73,7 @@ export const goods = [
     },
     {
         id: 'ff08',
+        raiting: 4,
         category: 'books',
         name: 'Александр Никонов: Физика на пальцах. Для детей и родителей',
         poster: "https://img4.labirint.ru/rc/94ff728ea7f384ec2aaf58fa1ceb0756/220x340/books80/794486/cover.jpg?1615613128",
@@ -71,6 +81,7 @@ export const goods = [
     },
     {
         id: 'ff09',
+        raiting: 4,
         category: 'books',
         name: 'Виктор Пелевин. Empire V',
         poster: "https://img4.labirint.ru/rc/3054cc0bdd3e6effb5021c3c34d1ff93/220x340/books55/542336/cover.jpg?1612697303",
@@ -78,6 +89,7 @@ export const goods = [
     },
     {
         id: 'ff10',
+        raiting: 4,
         category: 'books',
         name: 'Виктор Пелевин: Generation "П"',
         poster: "https://img4.labirint.ru/rc/e43d79fd0375b7889e2d1e0e2d8d348a/220x340/books50/496148/cover.jpg?1612693543",

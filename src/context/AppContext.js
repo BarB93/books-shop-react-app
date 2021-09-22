@@ -1,8 +1,13 @@
 import React from 'react'
 
+function noop() {}
+
 export const AppContext = React.createContext({
     order: [],
-    search: '',
     products: [],
-    isCartOpen: false
+    search: '',
+    setSearch: noop,
+    isCartOpen: false,
+    openCart: noop,
+    closeCart: noop,
 })
