@@ -36,8 +36,7 @@ const App = () => {
                 }}
             >
                 <Search />
-                <GoodsList />
-                
+                <GoodsList />  
             </Container>
             <Footer />
             <Basket />
