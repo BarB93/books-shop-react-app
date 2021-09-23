@@ -4,8 +4,10 @@
 https://books-shop-react-app.herokuapp.com/
 
 **Используемый стек:**
-* React
+* ReactJS
   * Hooks API
   * Context API
   * material-ui lib v5
 * json-server - в качестве мокового сервера
+* LocalStorage
+* SCSS
