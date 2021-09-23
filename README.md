@@ -7,5 +7,5 @@ https://books-shop-react-app.herokuapp.com/
 * React
   * Hooks API
   * Context API
-  * material-ul lib v5
+  * material-ui lib v5
 * json-server - в качестве мокового сервера
