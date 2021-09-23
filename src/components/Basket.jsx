@@ -8,8 +8,7 @@ import BasketItem from './BasketItem'
 const Basket = (props) => {
     const {
         order, setOrder,
-        isCartOpen, closeCart,
-        removeFromOrder, 
+        isCartOpen, closeCart
     } = useContext(AppContext)
 
     const alert = useAlert()
@@ -37,7 +36,7 @@ const Basket = (props) => {
                         <ListItem>Корзина пуста</ListItem>
                     ): (
                         <>
-                            {order.map(item => <BasketItem key={item.name} removeFromOrder={removeFromOrder} setOrder={setOrder} {...item}/>)}
+                            {order.map(item => <BasketItem key={item.name} item={item}/>)}
                             <ListItem>
                                 <Typography 
                                     sx={{fontWeight: "700"}}

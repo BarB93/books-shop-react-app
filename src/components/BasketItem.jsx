@@ -1,14 +1,19 @@
 import { Close, RemoveCircleOutline, AddCircleOutline} from "@mui/icons-material"
 import { ButtonGroup, IconButton, ListItem, Typography } from "@mui/material"
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
-const BasketItem = ({removeFromOrder, id, name, price, quantity, setOrder}) => {
-       const handleClickIncrement = () => {
-           setOrder(prev => prev.map(item => item.name === name? {...item, quantity: ++item.quantity } : item))
-       }
+const BasketItem = ({item}) => {
+    const {setOrder, removeFromOrder} = useContext(AppContext)
+    const {name, price, quantity, id} = item
+    
+    const handleClickIncrement = () => {
+        setOrder(prev => prev.map(item => item.id === id ? {...item, quantity: ++item.quantity} : item))
+    }
 
-       const handleClickDecrement = () => {
-            setOrder(prev => prev.map(item => item.name === name? {...item, quantity: --item.quantity } : item))
-        }
+    const handleClickDecrement = () => {
+        setOrder(prev => prev.map(item => item.id === id ? {...item, quantity: --item.quantity} : item))
+     }
 
     return (
         <ListItem >

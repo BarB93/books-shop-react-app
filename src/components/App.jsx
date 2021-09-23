@@ -1,9 +1,7 @@
-import {Container} from '@mui/material'
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {fab} from '@fortawesome/free-brands-svg-icons'
+import { useContext, useEffect } from 'react'
+import axios from 'axios'
 
 import { AppContext } from '../context/AppContext'
-import {useApp} from '../hooks/app.hook'
 
 import Basket from './Basket'
 import GoodsList from './GoodsList'
@@ -11,41 +9,40 @@ import Search from './Search'
 import Header from './Header'
 import Footer from './Footer'
 
+import {Container} from '@mui/material'
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {fab} from '@fortawesome/free-brands-svg-icons'
+
 library.add(fab)
 
 const App = () => {
-    const {
-        products,setProducts,
-        order, setOrder, addToOrder, removeFromOrder, 
-        isCartOpen,openCart,closeCart,
-        search, setSearch
-    } = useApp()
+   const {setLoading, setGoods} = useContext(AppContext)
+
+    useEffect(() => {
+        setLoading(true)
+        axios.get('/books')
+            .then(({data}) => {
+                setGoods(data)
+                setLoading(false)
+            })
+    },[])
 
     return (
-
-        <AppContext.Provider value={{
-            products, setProducts,
-            order, setOrder, addToOrder,removeFromOrder, 
-            isCartOpen, openCart, closeCart,
-            search, setSearch
-        }}>
-            <div className='App'>
-                <Header />
-                <Container sx={{
-                        mt: "5rem",
-                        minHeight: "100vh"
-                    }}
-                >
-                    <Search />
-                    <GoodsList />
-                    
-                </Container>
-                <Footer />
-                <Basket />
-            </div>
-        </AppContext.Provider>
-        
-    );
+        <div className='App'>
+            <Header />
+            <Container sx={{
+                    mt: "5rem",
+                    minHeight: "100vh"
+                }}
+            >
+                <Search />
+                <GoodsList />
+                
+            </Container>
+            <Footer />
+            <Basket />
+        </div>
+    )
 }
 
 export default App

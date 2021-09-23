@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react'
 import { useAlert } from 'react-alert'
-import { goods } from '../data/goods'
 
 const storageOrderName = 'STORAGE_ORDER'
 
@@ -9,9 +8,11 @@ export const useApp = () => {
         const initialValue = JSON.parse(localStorage.getItem(storageOrderName))
         return initialValue || []
     })
+    const [goods, setGoods] = useState([])
     const [search, setSearch] = useState('')
-    const [products, setProducts] = useState(goods)
+    const [products, setProducts] = useState([])
     const [isCartOpen, setCartOpen] = useState(false)
+    const [isLoading, setLoading] = useState(false)
     const alert = useAlert()
 
     useEffect(() => {
@@ -19,16 +20,18 @@ export const useApp = () => {
     }, [order])
 
     useEffect(() => {
-        if (!search) {
+        if (search.length < 1) {
             setProducts(goods)
             return;
         }
 
         setProducts(
-            products.filter((good) =>
+            goods.filter((good) =>
                 good.name.toLowerCase().includes(search.toLowerCase())
             ))
-    }, [search])
+    }, [search, goods])
+
+    
 
     const addToOrder = (goodsItem) => {
         let quantity = 1
@@ -67,8 +70,8 @@ export const useApp = () => {
         alert.success('Товар добавлен в корзину!')
     }
 
-    const removeFromOrder = (goodsItem) => {
-        setOrder(order.filter((item) => item.id !== goodsItem))
+    const removeFromOrder = (goodId) => {
+        setOrder(order.filter((item) => item.id !== goodId))
     }
 
     const openCart = () => {
@@ -83,6 +86,8 @@ export const useApp = () => {
         products, setProducts,
         order, setOrder, addToOrder, removeFromOrder, 
         isCartOpen, openCart, closeCart,
-        search, setSearch
+        search, setSearch,
+        isLoading, setLoading,
+        setGoods,
     }
 }

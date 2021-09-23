@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 
 import {ThemeProvider, createTheme} from '@mui/material/styles'
 import AlertContext from './context/AlertContext'
-import App from './components/App';
+import {Provider as AppContextProvider} from './context/AppContext'
+import App from './components/App'
 
 import './index.scss';
 
@@ -22,7 +23,9 @@ ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <AlertContext>
-                <App /> 
+                <AppContextProvider>
+                    <App /> 
+                </AppContextProvider>
             </AlertContext>
         </ThemeProvider>
     </React.StrictMode>,
