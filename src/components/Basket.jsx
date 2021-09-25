@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setOrder, closeCart as close } from '../redux/actions/cart'
 import { useAlert } from 'react-alert'
@@ -8,10 +8,17 @@ import BasketItem from './BasketItem'
 
 import { ShoppingCart,  KeyboardArrowRight } from '@mui/icons-material'
 
+import { LOCAL_STORAGE_NAME_CART_ORDER } from '../types/localStorage'
+
 const Basket = () => {
     const dispatch = useDispatch()
     const {order, isOpenCart, totalPrice} = useSelector(({cart}) => cart)
     const alert = useAlert()
+
+    useEffect(() => {
+        if(order)
+            localStorage.setItem(LOCAL_STORAGE_NAME_CART_ORDER,JSON.stringify(order))
+    }, [order])
 
     const closeCart = () => {
         dispatch(close(false))
