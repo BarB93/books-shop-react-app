@@ -1,7 +1,6 @@
 # BooksShop SPA
 
-ссылка на задеплоинный проект на heroku:
-https://books-shop-react-app.herokuapp.com/
+- [ссылка на задеплоинный проект на heroku](https://books-shop-react-app.herokuapp.com/)
 
 **Используемый стек:**
 * ReactJS
