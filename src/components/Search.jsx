@@ -1,12 +1,13 @@
-import { TextField } from "@mui/material";
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import { TextField } from "@mui/material"
+import { setSearch } from "../redux/actions/books"
+import { useSelector, useDispatch} from "react-redux"
+
 const Search = (props) => {
-    
-    const {search, setSearch} = useContext(AppContext)
+    const search = useSelector(({books}) => books.search)
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
-        setSearch(e.target.value)
+        dispatch(setSearch(e.target.value))
     }
 
     return (

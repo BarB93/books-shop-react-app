@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {setIsOpenCart} from '../redux/actions/cart'
 
 import {AppBar, Toolbar, IconButton, Typography, Badge, Container} from '@mui/material'
 import {ShoppingCart} from '@mui/icons-material';
-import { AppContext } from '../context/AppContext';
 
 function Header() {
-  const {order, openCart} = useContext(AppContext)
+  const orderLength = useSelector(({cart}) => cart.order.length) 
+  const dispatch = useDispatch()
 
   return ( 
       <AppBar sx={{color: "#fff"}}>
@@ -20,9 +22,9 @@ function Header() {
             </Typography>
             <IconButton
               color="inherit"
-              onClick={openCart}
+              onClick={() => {dispatch(setIsOpenCart(true))}}
             >
-              <Badge badgeContent={order.length} color="warning" showZero={true}>
+              <Badge badgeContent={orderLength} color="warning" showZero={true}>
                 <ShoppingCart />
               </Badge>
             </IconButton>

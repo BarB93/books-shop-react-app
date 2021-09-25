@@ -1,19 +1,24 @@
+import { useDispatch } from "react-redux"
+import { decrementCartItem, incrementCartItem, removeItemFromCart} from "../redux/actions/cart";
+
 import { Close, RemoveCircleOutline, AddCircleOutline} from "@mui/icons-material"
 import { ButtonGroup, IconButton, ListItem, Typography } from "@mui/material"
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
 
 const BasketItem = ({item}) => {
-    const {setOrder, removeFromOrder} = useContext(AppContext)
+    const dispatch = useDispatch()
     const {name, price, quantity, id} = item
     
     const handleClickIncrement = () => {
-        setOrder(prev => prev.map(item => item.id === id ? {...item, quantity: ++item.quantity} : item))
+        dispatch(incrementCartItem(id))
     }
 
     const handleClickDecrement = () => {
-        setOrder(prev => prev.map(item => item.id === id ? {...item, quantity: --item.quantity} : item))
-     }
+        dispatch(decrementCartItem(id))
+    }
+
+    const handleClickRemove = () => {
+        dispatch(removeItemFromCart(id))
+    }
 
     return (
         <ListItem >
@@ -30,7 +35,7 @@ const BasketItem = ({item}) => {
                     </IconButton>
                 </ButtonGroup>
             <IconButton
-                onClick={() => removeFromOrder(id)}
+                onClick={handleClickRemove}
             >
                 <Close />
             </IconButton>

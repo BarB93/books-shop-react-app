@@ -1,22 +1,41 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../context/AppContext'
-import { ShoppingCart,  KeyboardArrowRight } from '@mui/icons-material'
-import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography, IconButton, Button } from '@mui/material'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setOrder, setIsOpenCart } from '../redux/actions/cart'
 import { useAlert } from 'react-alert'
+
+import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography, IconButton, Button } from '@mui/material'
 import BasketItem from './BasketItem'
 
-const Basket = (props) => {
-    const {
-        order, setOrder,
-        isCartOpen, closeCart
-    } = useContext(AppContext)
+import { ShoppingCart,  KeyboardArrowRight } from '@mui/icons-material'
 
+const Basket = () => {
+    const dispatch = useDispatch()
+    const {order, isOpenCart} = useSelector(({cart}) => cart)
     const alert = useAlert()
+
+    const closeCart = () => {
+        dispatch(setIsOpenCart(false))
+    }
+
+    const handleClickCancel = () => {
+        if(window.confirm('Выдействительно хотите отменить покупку?')) { 
+            closeCart()
+            dispatch(setOrder([]))
+            alert.show("Заказ отменен!")
+        }
+    }
+
+    const handleClickAccept = () => {
+        console.log("Ваш заказ!",JSON.stringify(order,null,' '))
+        closeCart()
+        dispatch(setOrder([]))
+        alert.success("Заказ успешно оформлен!")
+    }
 
     return (
         <Drawer
             anchor="right"
-            open={isCartOpen}
+            open={isOpenCart}
             onClose={closeCart}
             PaperProps={{sx:{width:"100%", maxWidth: "400px"}}}
         >
@@ -46,12 +65,7 @@ const Basket = (props) => {
                                 </Typography>
                             </ListItem>
                             <ListItem>
-                                    <Button onClick={() => {
-                                                if(window.confirm('Выдействительно хотите отменить покупку?')) { 
-                                                    closeCart()
-                                                    setOrder([])
-                                                    alert.show("Заказ отменен!")
-                                                }}} 
+                                    <Button onClick={handleClickCancel} 
                                             variant="outlined" 
                                             sx={{mr:"1rem"}} >Отменить</Button>
                                     <Button variant="outlined" 
@@ -64,12 +78,7 @@ const Basket = (props) => {
                                                     
                                                 }
                                             }}
-                                            onClick={() => {
-                                                console.log("Ваш заказ!",JSON.stringify(order,null,' '))
-                                                closeCart()
-                                                setOrder([])
-                                                alert.success("Заказ успешно оформлен!")
-                                            }}
+                                            onClick={handleClickAccept}
                                     >Оформить заказ</Button>   
                             </ListItem>
                             

@@ -1,0 +1,3 @@
+export const SET_BOOKS = 'BOOKS/SET_BOOKS'
+export const SET_LOADED = 'BOOKS/SET_LOADED'
+export const SET_SEARCH = 'BOOKS/SET_SEARCH'

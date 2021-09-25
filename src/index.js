@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider as ReduxProvider} from 'react-redux'
 
 import {ThemeProvider, createTheme} from '@mui/material/styles'
-import AlertContext from './context/AlertContext'
-import {Provider as AppContextProvider} from './context/AppContext'
+import AlertProvider from './context/AlertContext'
+
 import App from './components/App'
+
+import store from './redux/store'
 
 import './index.scss';
 
@@ -22,11 +25,11 @@ const theme = createTheme({
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
-            <AlertContext>
-                <AppContextProvider>
+            <AlertProvider>
+                  <ReduxProvider store={store}>
                     <App /> 
-                </AppContextProvider>
-            </AlertContext>
+                  </ReduxProvider> 
+            </AlertProvider>
         </ThemeProvider>
     </React.StrictMode>,
     document.getElementById('root')

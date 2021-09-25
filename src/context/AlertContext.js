@@ -7,7 +7,7 @@ const optionsAlert = {
     position: positions.BOTTOM_LEFT
 }
 
-function AlertContext({children}) {
+function AlertProvider({children}) {
     return (
         <ProviderAlert template={AlertTemplate} {...optionsAlert}>
             {children}
@@ -15,4 +15,4 @@ function AlertContext({children}) {
     )
 }
 
-export default AlertContext
+export default AlertProvider

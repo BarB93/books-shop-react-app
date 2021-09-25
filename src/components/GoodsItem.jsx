@@ -1,9 +1,21 @@
 import React from 'react'
+import { useDispatch} from 'react-redux';
+import { useAlert } from 'react-alert';
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Rating, Typography } from '@mui/material';
 
-const GoodsItem = (props) => {
-    const { name, price, poster, raiting, setOrder} = props
-   
+const GoodsItem = ({ id, name, price, poster, raiting, addToCart}) => {
+    const dispatch = useDispatch()
+    const alert = useAlert()
+    
+    const handleClickAddToCart = () => {
+        dispatch(addToCart({
+            id,
+            name,
+            price,
+            })
+        )
+        alert.success("Товар добавлен в корзину!")
+    }
 
     return (
         <Grid item xs={12} sm={6} md={4}>
@@ -49,14 +61,8 @@ const GoodsItem = (props) => {
                 <CardActions>
                     <Button 
                         variant="outlined"
-                        onClick={()=> {
-                            setOrder({
-                                id: props.id,
-                                name: props.name,
-                                price: props.price
-                                }
-                            )
-                        }}>Купить</Button>
+                        onClick={handleClickAddToCart}
+                    >Купить</Button>
                 </CardActions>
            </Card>
            
