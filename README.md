@@ -13,3 +13,6 @@ https://books-shop-react-app.herokuapp.com/
 * json-server - в качестве мокового сервера
 * localStorage
 * SCSS
+* response design
+* responsive design
+
