@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setOrder, setIsOpenCart } from '../redux/actions/cart'
+import { setOrder, closeCart as close } from '../redux/actions/cart'
 import { useAlert } from 'react-alert'
 
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography, IconButton, Button } from '@mui/material'
@@ -14,7 +14,7 @@ const Basket = () => {
     const alert = useAlert()
 
     const closeCart = () => {
-        dispatch(setIsOpenCart(false))
+        dispatch(close(false))
     }
 
     const handleClickCancel = () => {

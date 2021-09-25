@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {setIsOpenCart} from '../redux/actions/cart'
+import {openCart} from '../redux/actions/cart'
 
 import {AppBar, Toolbar, IconButton, Typography, Badge, Container} from '@mui/material'
 import {ShoppingCart} from '@mui/icons-material';
@@ -22,7 +22,7 @@ function Header() {
             </Typography>
             <IconButton
               color="inherit"
-              onClick={() => {dispatch(setIsOpenCart(true))}}
+              onClick={() => {dispatch(openCart())}}
             >
               <Badge badgeContent={orderLength} color="warning" showZero={true}>
                 <ShoppingCart />

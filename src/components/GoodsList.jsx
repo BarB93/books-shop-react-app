@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { addToCart } from '../redux/actions/cart'
 
-import GoodsItem from './GoodsItem'
-import GoodsLoader from './GoodsLoader'
+import GoodsItem from './GoodsItem/GoodsItem'
+import GoodsLoader from './GoodsItem/GoodsLoader'
 
 import { Box, Grid, Typography} from '@mui/material'
 

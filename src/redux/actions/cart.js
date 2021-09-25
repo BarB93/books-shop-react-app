@@ -30,12 +30,10 @@ export const removeItemFromCart = (id) => ({
     payload: id
 })
 
-
-//почему-то не работает, проверить пойзже, можно удалить
 export const openCart = () => (dispatch) => {
         dispatch(setIsOpenCart(true))    
 }
-//почему-то не работает, проверить пойзже, можно удалить
+
 export const closeCart = () => (dispatch) => {
         dispatch(setIsOpenCart(false))
 }
