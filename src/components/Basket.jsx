@@ -10,7 +10,7 @@ import { ShoppingCart,  KeyboardArrowRight } from '@mui/icons-material'
 
 const Basket = () => {
     const dispatch = useDispatch()
-    const {order, isOpenCart} = useSelector(({cart}) => cart)
+    const {order, isOpenCart, totalPrice} = useSelector(({cart}) => cart)
     const alert = useAlert()
 
     const closeCart = () => {
@@ -21,15 +21,15 @@ const Basket = () => {
         if(window.confirm('Выдействительно хотите отменить покупку?')) { 
             closeCart()
             dispatch(setOrder([]))
-            alert.show("Заказ отменен!")
+            alert.show('Заказ отменен!')
         }
     }
 
     const handleClickAccept = () => {
-        console.log("Ваш заказ!",JSON.stringify(order,null,' '))
+        console.log(`Ваш заказ! \n${JSON.stringify(order,null,' ')} \nОбщая стоимость:  ${totalPrice} рублей`)
         closeCart()
         dispatch(setOrder([]))
-        alert.success("Заказ успешно оформлен!")
+        alert.success('Заказ успешно оформлен!')
     }
 
     return (
